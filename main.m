@@ -1,0 +1,11 @@
+[signal,Fs,tm]=rdsamp('07910');
+[ann]=rdann('07910','atr');
+sig = signal(:,1);        
+samp=length(tm);
+increm = 1/Fs;            
+nr_c = tm(samp,1)/1.2;    
+l_adn=length(ann);
+sig2 = filtrare(sig);
+total = segmentare (nr_c,increm,sig2,l_adn,ann);
+wavelet_continuu(total,nr_c,Fs);
+acuratete = cnn();
